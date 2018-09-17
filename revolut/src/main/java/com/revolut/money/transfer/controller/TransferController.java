@@ -11,9 +11,9 @@ import javax.ws.rs.core.MediaType;
 public class TransferController {
 
 	@POST
-    @Path("move/{fromAccountId}/{")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String test(@PathParam(value="id") String id) {
+    @Path("/move/{fromAccountId}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String test(@PathParam(value="fromAccountId") String id) {
         return "Test "+id;
     }
 }
