@@ -19,13 +19,13 @@ This project uses:
  
 ### Rest End Points
     - To transfer money : 
-  > http://localhost:8080/bank/transfer/{toAccountId}/{fromAccountId}/{amount}
-  > Request Type : POST
-  > Return Type  : JSON
-  > Url Parameters
-    - toAccountId : Bank Account Id of the receiver (Type:BigDecimal)
-    - fromAccountId : Bank Account Id of the sender (Type:BigDecimal)
-    - amount : Amount of transferring money (Type:BigDecimal)
+  - > http://localhost:8080/bank/transfer/{toAccountId}/{fromAccountId}/{amount}
+  - > Request Type : POST
+  - > Return Type  : JSON
+  - > Url Parameters
+     - toAccountId : Bank Account Id of the receiver (Type:BigDecimal)
+     - fromAccountId : Bank Account Id of the sender (Type:BigDecimal)
+     - amount : Amount of transferring money (Type:BigDecimal)
 
 ### Running Tests
 This project uses [Maven](https://maven.apache.org/).
