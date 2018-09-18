@@ -1,29 +1,31 @@
-# RestAPI Using Jersey
-This is an example BDD test automation Project for Java using the Cucumber-JVM framework.
-It contains a simple behavior scenario that performs a basic Google search.
+# RESTFull API
+Design and implement a RESTful API (including data model and the backing implementation) for money
+transfers between accounts.
 
 ### Purpose
 This project was developed by [Bahadir Sezgun](https://www.linkedin.com/in/bsezgun/)
-to demonstrate how to transfer money between accounts by internal service call.
+to demonstrate how to transfer money between accounts invoked by another internal system/service call.
 
 ### Version
 This project uses:
-- Java 1.8
 - Eclipse Oxygen
+- Maven 2
+- Java 1.8
 - Jetty Server 9.3.10.v20160621
 - Jersey 2.15
 - Hibernate 5.3.6
 - H2 In Memory Database 1.4
 - JUnit 4.12
  
-### Web Driver Setup
-This project uses Selenium WebDriver to interact with the Chrome web browser.
-In order for the tests to work, [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/)
-must be installed on the test machine and accessible from the system PATH.
-(This means that it must be accessible from the command line.)
-
-The source code may easily be changed to work with any other web browser.
-Just remember to install the required web drivers.
+### Rest End Points
+- To transfer money : 
+ -- POST Request
+ -- Return Type JSON
+ -- http://localhost:8080/bank/transfer/{toAccountId}/{fromAccountId}/{amount}
+  # Url Parameters
+  - toAccountId : Bank Account Id of the receiver (Type:BigDecimal)
+  - fromAccountId : Bank Account Id of the sender (Type:BigDecimal)
+  - amount : Amount of transferring money (Type:BigDecimal)
 
 ### Running Tests
 This project uses [Maven](https://maven.apache.org/).
