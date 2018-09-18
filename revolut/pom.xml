@@ -10,38 +10,40 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<version.jersey>2.15</version.jersey>
+		<version.jetty>9.3.10.v20160621</version.jetty>
 	</properties>
   
   <dependencies>
     <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-server</artifactId>
-        <version>9.2.3.v20140905</version>
+        <version>${version.jetty}</version>
     </dependency>
     <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-servlet</artifactId>
-        <version>9.2.3.v20140905</version>
+        <version>${version.jetty}</version>
     </dependency>
     <dependency>
         <groupId>org.glassfish.jersey.core</groupId>
         <artifactId>jersey-server</artifactId>
-        <version>2.7</version>
+        <version>${version.jersey}</version>
     </dependency>
     <dependency>
         <groupId>org.glassfish.jersey.containers</groupId>
         <artifactId>jersey-container-servlet-core</artifactId>
-        <version>2.7</version>
+        <version>${version.jersey}</version>
     </dependency>
     <dependency>
         <groupId>org.glassfish.jersey.containers</groupId>
         <artifactId>jersey-container-jetty-http</artifactId>
-        <version>2.7</version>
+        <version>${version.jersey}</version>
     </dependency>
     <dependency>
         <groupId>org.glassfish.jersey.media</groupId>
         <artifactId>jersey-media-moxy</artifactId>
-        <version>2.7</version>
+        <version>${version.jersey}</version>
     </dependency>
     
 
@@ -53,20 +55,33 @@
 	</dependency>
 
 	
-    <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+   <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
 	<dependency>
 	    <groupId>com.h2database</groupId>
 	    <artifactId>h2</artifactId>
-	    <version>1.4.197</version>
-	    <scope>test</scope>
+	    <version>1.4.190</version>
+	    <scope>runtime</scope>
 	</dependency>
+
     
     <dependency>
 	    <groupId>junit</groupId>
 	    <artifactId>junit</artifactId>
 	    <version>4.12</version>
 	</dependency>
-  </dependencies>
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-core</artifactId>
+	    <version>2.6.3</version>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.6.3</version>
+	</dependency>
+	
+  </dependencies>  
   
   <build>
   <finalName>revolut</finalName>
