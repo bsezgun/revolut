@@ -12,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.revolut.money.transfer.entity.Account;
-import com.revolut.money.transfer.entity.AccountDetail;
 import com.revolut.money.transfer.service.AccountService;
 import com.revolut.money.transfer.util.Result;
 
