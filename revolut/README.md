@@ -8,13 +8,13 @@ to demonstrate how to transfer money between accounts by internal service call.
 
 ### Version
 This project uses:
---- Java 1.8
---- Eclipse Oxygen
---- Jetty Server 9.3.10.v20160621
---- Jersey 2.15
---- Hibernate 5.3.6
---- H2 In Memory Database 1.4
---- JUnit 4.12
+-- Java 1.8
+-- Eclipse Oxygen
+-- Jetty Server 9.3.10.v20160621
+-- Jersey 2.15
+-- Hibernate 5.3.6
+-- H2 In Memory Database 1.4
+-- JUnit 4.12
  
 ### Web Driver Setup
 This project uses Selenium WebDriver to interact with the Chrome web browser.
