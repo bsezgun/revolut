@@ -3,15 +3,19 @@ This is an example BDD test automation Project for Java using the Cucumber-JVM f
 It contains a simple behavior scenario that performs a basic Google search.
 
 ### Purpose
-This project was developed by [Automation Panda](https://www.automationpanda.com/)
-to demonstrate how to use Cucumber-JVM as a BDD test framework.
+This project was developed by [Bahadir Sezgun](https://www.linkedin.com/in/bsezgun/)
+to demonstrate how to transfer money between accounts by internal service call.
 
 ### Version
-This project uses Cucumber-JVM 2.0.
-If using IntelliJ IDEA, please make sure to update to the latest version of the
-[Cucumber for Java plugin](https://plugins.jetbrains.com/plugin/7212-cucumber-for-java).
-Delete any old Run Configurations if updating, as well.
-
+This project uses:
+--- Java 1.8
+--- Eclipse Oxygen
+--- Jetty Server 9.3.10.v20160621
+--- Jersey 2.15
+--- Hibernate 5.3.6
+--- H2 In Memory Database 1.4
+--- JUnit 4.12
+ 
 ### Web Driver Setup
 This project uses Selenium WebDriver to interact with the Chrome web browser.
 In order for the tests to work, [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/)
