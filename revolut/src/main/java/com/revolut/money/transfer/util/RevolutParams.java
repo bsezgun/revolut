@@ -1,5 +1,7 @@
 package com.revolut.money.transfer.util;
 
+import java.math.BigDecimal;
+
 public class RevolutParams {
 
 	
@@ -17,5 +19,7 @@ public class RevolutParams {
 	public final static String NO_ACCOUNT_FOUND="Account Not Found";
 	public final static String ACCOUNT_FOUND="Account Found";
 	
+	public final static int ACCOUNT_TYPE_DOLAR=1;
+	public final static int ACCOUNT_TYPE_EURO=2;
 	
 }

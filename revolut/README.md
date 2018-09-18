@@ -18,7 +18,7 @@ This project uses:
 - JUnit 4.12
  
 ### Rest End Points
-    - To transfer money : 
+    - To transfer money : You can transfer money from account to another account
   - > http://localhost:8080/bank/transfer/{toAccountId}/{fromAccountId}/{amount}
   - > Request Type : POST
   - > Return Type  : JSON
@@ -26,6 +26,22 @@ This project uses:
      - toAccountId : Bank Account Id of the receiver (Type:BigDecimal)
      - fromAccountId : Bank Account Id of the sender (Type:BigDecimal)
      - amount : Amount of transferring money (Type:BigDecimal)
+
+    - To deposit account : This end point for the testing purposes. You can deposit the account. If system not found the account than system will create automatically.  
+  - > http://localhost:8080/bank/deposit/{toAccountId}/{deposit} 
+  - > Request Type : POST
+  - > Return Type  : JSON
+  - > Url Parameters
+     - toAccountId : Bank Account Id of the receiver (Type:BigDecimal) 
+     - amount : Amount of transferring money (Type:BigDecimal)
+
+    - To retrieve account :Also, this end point for the testing purposes. You can view account details by this end point. 
+  - > http://localhost:8080/bank/account/{accountId} 
+  - > Request Type : POST
+  - > Return Type  : JSON
+  - > Url Parameters
+     - accountId : Bank Account Id  (Type:BigDecimal)  
+    
 
 ### Running Tests
 This project uses [Maven](https://maven.apache.org/).

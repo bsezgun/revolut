@@ -13,7 +13,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.revolut.money.transfer.entity.Account;
-import com.revolut.money.transfer.service.AccountService;
+import com.revolut.money.transfer.service.AccountTypes;
+import com.revolut.money.transfer.service.DolarAccountService;
 import com.revolut.money.transfer.util.Result;
 import com.revolut.money.transfer.util.RevolutParams;
 
@@ -21,43 +22,61 @@ import com.revolut.money.transfer.util.RevolutParams;
 public class TransferController {
 
 	@POST
-    @Path("/transfer/{toAccountId}/{fromAccountId}/{amount}")
+    @Path("/transfer/{accountType}/{toAccountId}/{fromAccountId}/{amount}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String transfer(@PathParam(value="toAccountId") BigDecimal toAccountId
+    public String transfer(@PathParam(value="accountType") BigDecimal accountType
+    					,@PathParam(value="toAccountId") BigDecimal toAccountId
     					,@PathParam(value="fromAccountId") BigDecimal fromAccountId
     					,@PathParam(value="amount") BigDecimal amount) throws JsonProcessingException {
         
 		
-		AccountService accountService=AccountService.getAccountService();
 		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-		return ow.writeValueAsString(accountService.transferToAccount(toAccountId, fromAccountId, amount));
+		AccountTypes accountTypes=null;
+		if(accountType.intValue()==RevolutParams.ACCOUNT_TYPE_DOLAR)
+			accountTypes=new DolarAccountService();
+		else{
+			return ow.writeValueAsString(new Result(RevolutParams.NO_ACCOUNT_FOUND, RevolutParams.RESULT_STATU_FAIL, null));
+		}
+		return ow.writeValueAsString(accountTypes.transferToAccount(toAccountId, fromAccountId, amount));
     }
 	
 	@POST
-    @Path("/deposit/{toAccountId}/{deposit}")
+    @Path("/deposit/{accountType}/{toAccountId}/{deposit}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String deposit(@PathParam(value="toAccountId") BigDecimal toAccountId
+    public String deposit(@PathParam(value="accountType") BigDecimal accountType
+    					,@PathParam(value="toAccountId") BigDecimal toAccountId
     					,@PathParam(value="deposit") BigDecimal deposit) throws JsonProcessingException {
         
-		AccountService accountService=AccountService.getAccountService();
 		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-		return ow.writeValueAsString(accountService.depositAccount(toAccountId, deposit));
+		AccountTypes accountTypes=null;
+		if(accountType.intValue()==RevolutParams.ACCOUNT_TYPE_DOLAR)
+			accountTypes=new DolarAccountService();
+		else{
+			return ow.writeValueAsString(new Result(RevolutParams.NO_ACCOUNT_FOUND, RevolutParams.RESULT_STATU_FAIL, null));
+		}
+		
+		return ow.writeValueAsString(accountTypes.depositAccount(toAccountId, deposit));
     }
 	
 	@GET
-    @Path("/account/{accountId}")
+    @Path("/account/{accountType}/{accountId}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String findAccount(@PathParam(value="accountId") BigDecimal accountId) throws JsonProcessingException {
-		Result result=null;
-		AccountService accountService=AccountService.getAccountService();
-		Account account=accountService.getAccount(accountId);
-		if(account==null) {
-			result=new Result(RevolutParams.NO_ACCOUNT_FOUND,RevolutParams.RESULT_STATU_FAIL, null);
-		}else {
-			result=new Result(RevolutParams.ACCOUNT_FOUND,RevolutParams.RESULT_STATU_SUCCESS, account);
+    public String findAccount(@PathParam(value="accountType") BigDecimal accountType,@PathParam(value="accountId") BigDecimal accountId) throws JsonProcessingException {
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		AccountTypes accountTypes=null;
+		if(accountType.intValue()==RevolutParams.ACCOUNT_TYPE_DOLAR)
+			accountTypes=new DolarAccountService();
+		else{
+			return ow.writeValueAsString(new Result(RevolutParams.NO_ACCOUNT_FOUND, RevolutParams.RESULT_STATU_FAIL, null));
 		}
 		
-		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-		return ow.writeValueAsString(result);
+		Account account=accountTypes.getAccount(accountId);
+		if(account==null) {
+			return ow.writeValueAsString(new Result(RevolutParams.NO_ACCOUNT_FOUND,RevolutParams.RESULT_STATU_FAIL, null));
+		}else {
+			return ow.writeValueAsString(new Result(RevolutParams.ACCOUNT_FOUND,RevolutParams.RESULT_STATU_SUCCESS, account));
+		}
+		
+		
     }
 }

@@ -1,7 +1,6 @@
 package com.revolut.money.transfer.entity;
 
 import java.math.BigDecimal;
-import java.util.Comparator;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -23,8 +22,8 @@ import javax.persistence.Table;
  *  v.1.0.1
  */
 @Entity
-@Table(name = "account_detail")
-public class AccountDetail implements Comparable<AccountDetail> {
+@Table(name = "account_detail_dolar")
+public class AccountDetailDolar implements Comparable<AccountDetailDolar> {
 
 	
 	@Id
@@ -97,13 +96,8 @@ public class AccountDetail implements Comparable<AccountDetail> {
 	}
 
 	@Override
-	public int compareTo(AccountDetail acd) {
+	public int compareTo(AccountDetailDolar acd) {
 		return this.getAccountId().compareTo(acd.getAccountId());
 	}
 
-	
-
-	
-
-	
 }

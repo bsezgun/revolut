@@ -4,16 +4,12 @@ import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
 import com.revolut.money.transfer.entity.Account;
-import com.revolut.money.transfer.entity.AccountDetail;
+import com.revolut.money.transfer.entity.AccountDetailDolar;
+import com.revolut.money.transfer.entity.AccountDolar;
 import com.revolut.money.transfer.facade.AccountFacade;
-import com.revolut.money.transfer.facade.Bank;
-import com.revolut.money.transfer.repository.AccountDetailRepository;
-import com.revolut.money.transfer.repository.AccountRepository;
-import com.revolut.money.transfer.repository.InitRepository;
+import com.revolut.money.transfer.facade.DolarAccountFacade;
+import com.revolut.money.transfer.repository.DolarAccountRepository;
 import com.revolut.money.transfer.util.Result;
 import com.revolut.money.transfer.util.RevolutParams;
 /**
@@ -29,28 +25,17 @@ import com.revolut.money.transfer.util.RevolutParams;
  *  @version
  *  v.1.0.1
  */
-public class AccountService {
+public class DolarAccountService implements AccountTypes {
 
 	
-	private static AccountService accountService;
 	
-	private AccountService() {
-		
-		
+	public DolarAccountService() {
 	}
 	
-	
-	public static AccountService getAccountService() {
-		if(accountService==null)
-			accountService= new AccountService();
-		return accountService;
-	}
-	
-
-	public synchronized Result depositAccount(BigDecimal accountId,BigDecimal deposit) {
+	public Result depositAccount(BigDecimal accountId,BigDecimal deposit) {
 		Result result=new Result(RevolutParams.DEPOSIT_TO_ACCOUNT_SUCCESS_MESSAGE ,RevolutParams.RESULT_STATU_SUCCESS, null);
 		try {
-			AccountRepository accountRepository=AccountRepository.getAccountRepository();
+			DolarAccountRepository accountRepository=DolarAccountRepository.getAccountRepository();
 			accountRepository.depositAccount(accountId, deposit);
 		} catch (Exception e) {
 			result=new Result(RevolutParams.DEPOSIT_TO_ACCOUNT_FAIL_MESSAGE ,RevolutParams.RESULT_STATU_FAIL, null);
@@ -58,11 +43,11 @@ public class AccountService {
 		return result;
 	}
 	
-	public synchronized Result transferToAccount(BigDecimal toAccountId,BigDecimal fromAccountId,BigDecimal transferAmount) {
+	public Result transferToAccount(BigDecimal toAccountId,BigDecimal fromAccountId,BigDecimal transferAmount) {
 		Result result=new Result(RevolutParams.TRANSFER_TO_ACCOUNT_SUCCESS_MESSAGE ,RevolutParams.RESULT_STATU_SUCCESS, null);
-		AccountFacade accountFacade=new Bank();
+		AccountFacade accountFacade=new DolarAccountFacade();
 		if(accountFacade.isSufficentBalance(fromAccountId, transferAmount)) {
-			AccountRepository accountRepository=AccountRepository.getAccountRepository();
+			DolarAccountRepository accountRepository=DolarAccountRepository.getAccountRepository();
 			accountRepository.withDrawAccount(fromAccountId, transferAmount);
 			accountRepository.depositAccount(toAccountId, transferAmount);
 		}else {
@@ -73,21 +58,23 @@ public class AccountService {
 	
 	
 	public Account getAccount(BigDecimal accountId) {
-		AccountRepository accountRepository=AccountRepository.getAccountRepository();
-		Account account=accountRepository.getAccount(accountId);
+		DolarAccountRepository accountRepository=DolarAccountRepository.getAccountRepository();
+		AccountDolar account=accountRepository.getAccount(accountId);
 		account.setAccountDetails(getAccountDetails(accountId));
 		Collections.sort(account.getAccountDetails());
 		return accountRepository.getAccount(accountId);
 	}
 	
-	private List<AccountDetail> getAccountDetails(BigDecimal accountId) {
-		AccountRepository accountRepository=AccountRepository.getAccountRepository();
+	private List<AccountDetailDolar> getAccountDetails(BigDecimal accountId) {
+		DolarAccountRepository accountRepository=DolarAccountRepository.getAccountRepository();
 		return accountRepository.getAccountDetails(accountId);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Account> getAllAccounts() {
-		AccountRepository accountRepository=AccountRepository.getAccountRepository();
-		return accountRepository.getAllAccounts();
+		DolarAccountRepository accountRepository=DolarAccountRepository.getAccountRepository();
+		List<? extends Account> accounts=accountRepository.getAllAccounts();
+		return (List<Account>)accounts;
 	}
 	
 	
