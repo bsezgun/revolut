@@ -15,6 +15,10 @@ public class RevolutParams {
 	public final static String TRANSFER_TO_ACCOUNT_SUCCESS_MESSAGE="Your transaction is been done successfully. Thanks";
 	public final static String TRANSFER_TO_ACCOUNT_FAIL_MESSAGE="Your transaction is Not been done successfully.  Please check your account";
 	public final static String INSUFFICIENT_BALANCE="You have insufficient balance. Please check your account. Your transaction failed";
+	public final static String TRANSFER_RESTRICTED="The transfer is restricted by rules. Your transaction failed";
+	
+	
+	
 	
 	public final static String NO_ACCOUNT_FOUND="Account Not Found";
 	public final static String ACCOUNT_FOUND="Account Found";

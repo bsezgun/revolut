@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.revolut.money.transfer.entity.Account;
 import com.revolut.money.transfer.service.AccountTypes;
 import com.revolut.money.transfer.service.DolarAccountService;
+import com.revolut.money.transfer.service.EuroAccountService;
 import com.revolut.money.transfer.util.Result;
 import com.revolut.money.transfer.util.RevolutParams;
 
@@ -34,6 +35,8 @@ public class TransferController {
 		AccountTypes accountTypes=null;
 		if(accountType.intValue()==RevolutParams.ACCOUNT_TYPE_DOLAR)
 			accountTypes=new DolarAccountService();
+		else if(accountType.intValue()==RevolutParams.ACCOUNT_TYPE_EURO)
+			accountTypes=new EuroAccountService();
 		else{
 			return ow.writeValueAsString(new Result(RevolutParams.NO_ACCOUNT_FOUND, RevolutParams.RESULT_STATU_FAIL, null));
 		}
@@ -51,6 +54,8 @@ public class TransferController {
 		AccountTypes accountTypes=null;
 		if(accountType.intValue()==RevolutParams.ACCOUNT_TYPE_DOLAR)
 			accountTypes=new DolarAccountService();
+		else if(accountType.intValue()==RevolutParams.ACCOUNT_TYPE_EURO)
+			accountTypes=new EuroAccountService();
 		else{
 			return ow.writeValueAsString(new Result(RevolutParams.NO_ACCOUNT_FOUND, RevolutParams.RESULT_STATU_FAIL, null));
 		}
@@ -66,6 +71,8 @@ public class TransferController {
 		AccountTypes accountTypes=null;
 		if(accountType.intValue()==RevolutParams.ACCOUNT_TYPE_DOLAR)
 			accountTypes=new DolarAccountService();
+		else if(accountType.intValue()==RevolutParams.ACCOUNT_TYPE_EURO)
+			accountTypes=new EuroAccountService();
 		else{
 			return ow.writeValueAsString(new Result(RevolutParams.NO_ACCOUNT_FOUND, RevolutParams.RESULT_STATU_FAIL, null));
 		}

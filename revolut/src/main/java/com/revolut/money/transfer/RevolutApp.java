@@ -2,11 +2,15 @@ package com.revolut.money.transfer;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -39,22 +43,23 @@ public class RevolutApp {
         Server jettyServer = new Server(8080);
         jettyServer.setHandler(context);
 
-        ServletHolder jerseyServlet = context.addServlet(ServletContainer.class, "/*");
+        ServletHolder jerseyServlet = context.addServlet(ServletContainer.class, "/revolut/*");
         jerseyServlet.setInitOrder(0);
 
         jerseyServlet.setInitParameter(
                 "jersey.config.server.provider.packages",
-                "com.dovydasvenckus.jersey.resources"
+                "com.revolut.money.transfer.controller"
         );
         
         Map<String,String> initMap=new HashMap<String, String>();
         initMap.put("com.sun.jersey.api.json.POJOMappingFeature","true");
-        initMap.put("jersey.config.server.provider.classnames", TransferController.class.getCanonicalName());
+        //initMap.put("jersey.config.server.provider.classnames", TransferController.class.getCanonicalName());
         
-        jerseyServlet.setInitParameters(initMap);
+       // jerseyServlet.setInitParameters(initMap);
         
-        
+        loadApplicationProperties();
         createTestAccounts();
+       
         try {
             jettyServer.start();
             jettyServer.join();
@@ -62,6 +67,17 @@ public class RevolutApp {
             jettyServer.destroy();
         }
 
+	}
+	
+	public static Properties applicationProperties;
+	
+	private static void loadApplicationProperties() throws IOException {
+		applicationProperties = new Properties();
+		ClassLoader classLoader = new RevolutApp().getClass().getClassLoader();
+		File file = new File(classLoader.getResource("application.properties").getFile());
+		FileInputStream in = new FileInputStream(file);
+		applicationProperties.load(in);
+		in.close();
 	}
 	
 	

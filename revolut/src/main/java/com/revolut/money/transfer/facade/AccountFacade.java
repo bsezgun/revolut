@@ -6,5 +6,6 @@ public interface AccountFacade {
 
 	public boolean isSufficentBalance(BigDecimal accountId,BigDecimal withDrawAmount);
 	
+	public boolean isTransferRestricted(BigDecimal withDrawAmount);
 	
 }

@@ -13,6 +13,10 @@ public class Result {
 	
 	
 	
+	public Result() {
+	}
+
+
 	public Result(String resultMessage, String resultStatu, Object resultObj) {
 		this.resultMessage = resultMessage;
 		this.resultStatu = resultStatu;

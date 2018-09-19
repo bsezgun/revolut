@@ -2,11 +2,13 @@ package com.revolut.money.transfer.facade;
 
 import java.math.BigDecimal;
 
+import com.revolut.money.transfer.RevolutApp;
 import com.revolut.money.transfer.entity.AccountDolar;
 import com.revolut.money.transfer.repository.DolarAccountRepository;
 
 public class DolarAccountFacade implements AccountFacade {
 
+	
 	public boolean isSufficentBalance(BigDecimal accountId, BigDecimal withDrawAmount) {
 		DolarAccountRepository accountRepository=DolarAccountRepository.getAccountRepository();
 		AccountDolar account=accountRepository.getAccount(accountId);
@@ -17,5 +19,21 @@ public class DolarAccountFacade implements AccountFacade {
 		
 		return true;
 	}
+	
+	public boolean isTransferRestricted(BigDecimal withDrawAmount) {
+		
+		BigDecimal maxRestriction=new BigDecimal(RevolutApp.applicationProperties.get("withdraw.dolar.maximum").toString());
+		BigDecimal minRestriction=new BigDecimal(RevolutApp.applicationProperties.get("withdraw.dolar.minimum").toString());
+		
+		
+		if(withDrawAmount.doubleValue()>maxRestriction.doubleValue())
+			return false;
+		else if (withDrawAmount.doubleValue()<minRestriction.doubleValue())
+			return false;	
+		
+		return true;
+	}
+		
+	
 
 }

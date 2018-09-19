@@ -2,6 +2,7 @@ package com.revolut.money.transfer.facade;
 
 import java.math.BigDecimal;
 
+import com.revolut.money.transfer.RevolutApp;
 import com.revolut.money.transfer.entity.AccountEuro;
 import com.revolut.money.transfer.repository.EuroAccountRepository;
 
@@ -17,5 +18,20 @@ public class EuroAccountFacade implements AccountFacade {
 		
 		return true;
 	}
+
+	@Override
+	public boolean isTransferRestricted(BigDecimal withDrawAmount) {
+		BigDecimal maxRestriction=new BigDecimal(RevolutApp.applicationProperties.get("withdraw.euro.maximum").toString());
+		BigDecimal minRestriction=new BigDecimal(RevolutApp.applicationProperties.get("withdraw.euro.minimum").toString());
+		
+		if(withDrawAmount.doubleValue()>maxRestriction.doubleValue())
+			return false;
+		else if (withDrawAmount.doubleValue()<minRestriction.doubleValue())
+			return false;	
+		
+		return true;
+	}
+	
+	
 
 }

@@ -20,7 +20,7 @@ public class AccountEuro extends Account implements Comparable<AccountEuro>{
     private BigDecimal accountId;
 	
 	@Column
-    private String accountName;
+    private final String accountName="EURO ACCOUNT";
    
 	@Column
     private BigDecimal accountType;
@@ -75,9 +75,7 @@ public class AccountEuro extends Account implements Comparable<AccountEuro>{
 		return accountName;
 	}
 
-	public void setAccountName(String accountName) {
-		this.accountName = accountName;
-	}
+	
 
 	
 
@@ -93,7 +91,7 @@ public class AccountEuro extends Account implements Comparable<AccountEuro>{
 
 	@Override
 	public String toString() {
-		 return "Account Id:"+this.accountId+",  Amount:"+this.amount;
+		 return "Account Id:"+this.accountId+",  Amount:"+this.amount+",  ACCOUNT NAME "+this.accountName+", ACCOUNT TYPE:"+this.accountType+", CURRENCY:"+this.currency;
 	}
 
 	@Override

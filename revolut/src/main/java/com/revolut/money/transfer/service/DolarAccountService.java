@@ -44,16 +44,19 @@ public class DolarAccountService implements AccountTypes {
 	}
 	
 	public Result transferToAccount(BigDecimal toAccountId,BigDecimal fromAccountId,BigDecimal transferAmount) {
-		Result result=new Result(RevolutParams.TRANSFER_TO_ACCOUNT_SUCCESS_MESSAGE ,RevolutParams.RESULT_STATU_SUCCESS, null);
 		AccountFacade accountFacade=new DolarAccountFacade();
+		if(!accountFacade.isTransferRestricted(transferAmount)) {
+			return new Result(RevolutParams.TRANSFER_RESTRICTED, RevolutParams.RESULT_STATU_FAIL, null);
+		}
 		if(accountFacade.isSufficentBalance(fromAccountId, transferAmount)) {
 			DolarAccountRepository accountRepository=DolarAccountRepository.getAccountRepository();
 			accountRepository.withDrawAccount(fromAccountId, transferAmount);
 			accountRepository.depositAccount(toAccountId, transferAmount);
+			return new Result(RevolutParams.TRANSFER_TO_ACCOUNT_SUCCESS_MESSAGE ,RevolutParams.RESULT_STATU_SUCCESS, null);
 		}else {
-			result=new Result(RevolutParams.INSUFFICIENT_BALANCE, RevolutParams.RESULT_STATU_FAIL, null);
+			return new Result(RevolutParams.INSUFFICIENT_BALANCE, RevolutParams.RESULT_STATU_FAIL, null);
 		}
-		return result;
+		
 	}
 	
 	
