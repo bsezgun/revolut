@@ -66,30 +66,30 @@ To run tests, simply run "mvn clean test".
 		2. It loads properties from application.properties file
 		3. It creates Test Accounts for test purposes
 		    
-	- com.revolut.money.transfer.controller package
-		- The Rest Controller Classes under this package. Please look at the Rest End Points section
+> com.revolut.money.transfer.controller package
+- The Rest Controller Classes under this package. Please look at the Rest End Points section
 		
-	- com.revolut.money.transfer.entity package
-		- The Entity Classes under this package. Abstract factory pattern used for the entities in case of different type of accounts add in the future.
+> com.revolut.money.transfer.entity package
+- The Entity Classes under this package. Abstract factory pattern used for the entities in case of different type of accounts add in the future.
+
+> com.revolut.money.transfer.facade package
+- The business rules control Classes under this package. Factory pattern used for the classes in case of different type of accounts rules control in the future.
 		
-	- com.revolut.money.transfer.facade package
-		- The business rules control Classes under this package. Factory pattern used for the classes in case of different type of accounts rules control in the future.
-		
-	- com.revolut.money.transfer.repository package
-		- The repository (database executions) Classes under this package. Singleton pattern used for the classes. These classes are immutable classes.
+> com.revolut.money.transfer.repository package
+- The repository (database executions) Classes under this package. Singleton pattern used for the classes. These classes are immutable classes.
 			
-	- com.revolut.money.transfer.service package
-		- The business service (database executions) classes under this package. Factory pattern used for the classes. When request received by the Rest Controller, it calls the related service business by accountType via AccountType interface.
+> com.revolut.money.transfer.service package
+- The business service (database executions) classes under this package. Factory pattern used for the classes. When request received by the Rest Controller, it calls the related service business by accountType via AccountType interface.
 		
-	- com.revolut.money.transfer.util package
-		- The utility class and response class  under this package. Utility class is responsible for the final variables. These variables use for response status or can be change project startup behavior.
+> com.revolut.money.transfer.util package
+- The utility class and response class  under this package. Utility class is responsible for the final variables. These variables use for response status or can be change project startup behavior.
 		 
 ##### src/main/resources
-		- Configuration files under this folder. 
+> Configuration files under this folder. 
 		  1. hibernate.cfg.xml, hibernate.properties are for the H2 Database configuration 
 		  2. application.properties is for application rules configuration
-	- > src/test
-		- revolut package
-			- All test classes under this package. JUnit test framework is used for testing.	
-			- To run tests, simply run "mvn clean test".	
+#####  src/test
+> revolut package
+- All test classes under this package. JUnit test framework is used for testing.	
+- To run tests, simply run "mvn clean test".	
 
