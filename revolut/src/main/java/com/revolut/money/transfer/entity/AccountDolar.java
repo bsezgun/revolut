@@ -10,7 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
+/**
+ * 
+ * @author bsezgun
+ * @comment
+ *  This class is in-memory <b>AccountDolar</b> H2 Database table.<br/> accountId column is automatically increased if it is not set.
+ * 	@since 2018-09-19
+ *  @version v.1.0.1
+ */
 @Entity
 @Table(name = "account_dolar")
 public class AccountDolar extends Account implements Comparable<AccountDolar>{
@@ -90,7 +97,7 @@ public class AccountDolar extends Account implements Comparable<AccountDolar>{
 
 	@Override
 	public String toString() {
-		 return "Account Id:"+this.accountId+",  Amount:"+this.amount+",  ACCOUNT NAME "+this.accountName+", ACCOUNT TYPE:"+this.accountType+", CURRENCY:"+this.currency;
+		 return "Account Id:"+this.accountId+",  Amount:"+this.amount+",  ACCOUNT NAME: "+this.accountName+", ACCOUNT TYPE:"+this.accountType+", CURRENCY:"+this.currency;
 	}
 
 	@Override

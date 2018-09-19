@@ -16,10 +16,8 @@ import javax.persistence.Table;
  * @comment
  *  This class is in-memory <b>Account</b> H2 Database table.<br/> accountDetailId column is automatically increased if it is not set.
  *  <br/>accountId is the foreign key of Account table.
- * 	@since
- *  18.09.2018
- *  @version
- *  v.1.0.1
+ * 	@since 2018-09-19
+ *  @version v.1.0.1
  */
 @Entity
 @Table(name = "account_detail_dolar")

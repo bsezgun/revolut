@@ -23,7 +23,7 @@ import com.revolut.money.transfer.RevolutApp;
 import com.revolut.money.transfer.controller.TransferController;
 import com.revolut.money.transfer.entity.Account;
 import com.revolut.money.transfer.entity.AccountEuro;
-import com.revolut.money.transfer.service.AccountTypes;
+import com.revolut.money.transfer.service.AccountService;
 import com.revolut.money.transfer.service.EuroAccountService;
 import com.revolut.money.transfer.util.Result;
 import com.revolut.money.transfer.util.RevolutParams;
@@ -42,7 +42,7 @@ public class TransferEuroAccountTest {
 			in.close();
 			
 		 
-		    AccountTypes service=new EuroAccountService();
+		    AccountService service=new EuroAccountService();
 	       service.depositAccount(new BigDecimal(1), new BigDecimal(500d));
 	       service.depositAccount(new BigDecimal(2), new BigDecimal(1500d));
 	       service.depositAccount(new BigDecimal(3), new BigDecimal(2500d));
@@ -51,16 +51,14 @@ public class TransferEuroAccountTest {
 	 @Test
 	 public void transferAccount() throws IOException {
 		 TransferController transferController=new TransferController();
-		 String tr1=transferController.transfer(new BigDecimal(RevolutParams.ACCOUNT_TYPE_EURO), new BigDecimal(1), new BigDecimal(2), new BigDecimal(600));
-		 ObjectMapper mapper = new ObjectMapper();
-		 Result result=mapper.readValue(tr1, Result.class);
+		 Result result=transferController.transfer(new BigDecimal(RevolutParams.ACCOUNT_TYPE_EURO), new BigDecimal(1), new BigDecimal(2), new BigDecimal(600));
 		 assertTrue(result.getResultStatu().equals(RevolutParams.RESULT_STATU_SUCCESS));
 	 }
 	 
 	 @SuppressWarnings("unchecked")
 	 @After
 	 public void testGetAllAccount() {
-	       AccountTypes service=new EuroAccountService();
+	       AccountService service=new EuroAccountService();
 	       List<? extends Account> accounts=service.getAllAccounts();
 	       Collections.sort(((List<AccountEuro>)accounts));
 	       accounts.forEach(account->System.out.println(account));

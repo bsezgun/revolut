@@ -20,7 +20,7 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import com.revolut.money.transfer.controller.TransferController;
 import com.revolut.money.transfer.entity.Account;
 import com.revolut.money.transfer.entity.AccountDolar;
-import com.revolut.money.transfer.service.AccountTypes;
+import com.revolut.money.transfer.service.AccountService;
 import com.revolut.money.transfer.service.DolarAccountService;
 /**
  * 
@@ -83,7 +83,7 @@ public class RevolutApp {
 	
 	@SuppressWarnings("unchecked")
 	public static void createTestAccounts() {
-		   AccountTypes service=new DolarAccountService();
+		   AccountService service=new DolarAccountService();
 	       service.depositAccount(new BigDecimal(1), new BigDecimal(500d));
 	       service.depositAccount(new BigDecimal(2), new BigDecimal(1500d));
 	       service.depositAccount(new BigDecimal(3), new BigDecimal(2500d));

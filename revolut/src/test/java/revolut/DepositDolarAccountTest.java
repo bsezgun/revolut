@@ -35,9 +35,7 @@ public class DepositDolarAccountTest {
 	 @Test
 	 public void depositAccount() throws IOException {
 		 TransferController transferController=new TransferController();
-		 String dpc=transferController.deposit(new BigDecimal(RevolutParams.ACCOUNT_TYPE_DOLAR), new BigDecimal(1), new BigDecimal(600));
-		 ObjectMapper mapper = new ObjectMapper();
-		 Result result=mapper.readValue(dpc, Result.class);
+		 Result result=transferController.deposit(new BigDecimal(RevolutParams.ACCOUNT_TYPE_DOLAR), new BigDecimal(1), new BigDecimal(600));
 		 assertTrue(result.getResultStatu().equals(RevolutParams.RESULT_STATU_SUCCESS));
 	 }
 }

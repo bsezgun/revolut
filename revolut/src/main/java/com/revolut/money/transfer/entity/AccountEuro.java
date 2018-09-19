@@ -10,7 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
+/**
+ * 
+ * @author bsezgun
+ * @comment
+ *  This class is in-memory <b>AccountEuro</b> H2 Database table.<br/> accountId column is automatically increased if it is not set.
+ * 	@since 2018-09-19
+ *  @version v.1.0.1
+ */
 @Entity
 @Table(name = "account_euro")
 public class AccountEuro extends Account implements Comparable<AccountEuro>{
@@ -31,14 +38,9 @@ public class AccountEuro extends Account implements Comparable<AccountEuro>{
 	@Column
     private BigDecimal amount;
 
-	
-	
-	
 	@Transient
 	private List<AccountDetailEuro> accountDetails; 
 	
-	
-
 	public BigDecimal getAccountType() {
 		return accountType;
 	}
@@ -75,10 +77,6 @@ public class AccountEuro extends Account implements Comparable<AccountEuro>{
 		return accountName;
 	}
 
-	
-
-	
-
 	public BigDecimal getAmount() {
 		return amount;
 	}
@@ -87,11 +85,9 @@ public class AccountEuro extends Account implements Comparable<AccountEuro>{
 		this.amount = amount;
 	}
 
-
-
 	@Override
 	public String toString() {
-		 return "Account Id:"+this.accountId+",  Amount:"+this.amount+",  ACCOUNT NAME "+this.accountName+", ACCOUNT TYPE:"+this.accountType+", CURRENCY:"+this.currency;
+		 return "Account Id:"+this.accountId+",  Amount:"+this.amount+",  ACCOUNT NAME: "+this.accountName+", ACCOUNT TYPE:"+this.accountType+", CURRENCY:"+this.currency;
 	}
 
 	@Override

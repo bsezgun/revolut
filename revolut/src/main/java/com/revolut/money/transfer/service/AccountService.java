@@ -6,7 +6,7 @@ import java.util.List;
 import com.revolut.money.transfer.entity.Account;
 import com.revolut.money.transfer.util.Result;
 
-public interface AccountTypes {
+public interface AccountService {
 
 	public Result depositAccount(BigDecimal accountId,BigDecimal deposit);
 	public Result transferToAccount(BigDecimal toAccountId,BigDecimal fromAccountId,BigDecimal transferAmount);

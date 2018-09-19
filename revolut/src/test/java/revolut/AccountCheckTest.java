@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import com.revolut.money.transfer.entity.Account;
 import com.revolut.money.transfer.entity.AccountDolar;
-import com.revolut.money.transfer.service.AccountTypes;
+import com.revolut.money.transfer.service.AccountService;
 import com.revolut.money.transfer.service.DolarAccountService;
 import com.revolut.money.transfer.util.Result;
 
@@ -21,7 +21,7 @@ public class AccountCheckTest {
 
 	 @Test
 	 public void depositAccount() {
-		   AccountTypes service=new DolarAccountService();
+		   AccountService service=new DolarAccountService();
 	       service.depositAccount(new BigDecimal(1), new BigDecimal(500));
 	       Account account=service.getAccount(new BigDecimal(1));
 	       System.out.println(account);
@@ -31,7 +31,7 @@ public class AccountCheckTest {
 	 
 	 @Before
 	 public void createAccounts() {
-		   AccountTypes service=new DolarAccountService();
+		   AccountService service=new DolarAccountService();
 	       service.depositAccount(new BigDecimal(1), new BigDecimal(500d));
 	       service.depositAccount(new BigDecimal(2), new BigDecimal(1500d));
 	       service.depositAccount(new BigDecimal(3), new BigDecimal(2500d));
@@ -39,7 +39,7 @@ public class AccountCheckTest {
 	 
 	 @Test
 	 public void transferAccount() {
-		   AccountTypes service=new DolarAccountService();
+		   AccountService service=new DolarAccountService();
 	       
 	       Result result=service.transferToAccount(new BigDecimal(2), new BigDecimal(1), new BigDecimal(400d));
 	       
@@ -68,7 +68,7 @@ public class AccountCheckTest {
 	 @SuppressWarnings("unchecked")
 	 @After
 	 public void testGetAllAccount() {
-	       AccountTypes service=new DolarAccountService();
+	       AccountService service=new DolarAccountService();
 	       List<? extends Account> accounts=service.getAllAccounts();
 	       Collections.sort(((List<AccountDolar>)accounts));
 	       accounts.forEach(account->System.out.println(account));

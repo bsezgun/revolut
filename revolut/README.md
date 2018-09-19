@@ -35,7 +35,7 @@ This project uses:
   -  Url Parameters
       - accountType : Account Type (USD:1,EURO:2) (Type:BigDecimal)
       - toAccountId : Bank Account Id of the receiver (Type:BigDecimal) 
-      - amount : Amount of transferring money (Type:BigDecimal)
+      - deposit : Amount of transferring money (Type:BigDecimal)
 
 ###
 > To retrieve account :Also, this end point for the testing purposes. You can view account details by this end point. 

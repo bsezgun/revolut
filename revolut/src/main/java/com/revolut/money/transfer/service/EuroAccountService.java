@@ -13,7 +13,7 @@ import com.revolut.money.transfer.repository.EuroAccountRepository;
 import com.revolut.money.transfer.util.Result;
 import com.revolut.money.transfer.util.RevolutParams;
 
-public class EuroAccountService implements AccountTypes{
+public class EuroAccountService implements AccountService{
 
 	public Result depositAccount(BigDecimal accountId,BigDecimal deposit) {
 		Result result=new Result(RevolutParams.DEPOSIT_TO_ACCOUNT_SUCCESS_MESSAGE ,RevolutParams.RESULT_STATU_SUCCESS, null);

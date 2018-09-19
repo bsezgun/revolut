@@ -8,10 +8,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.revolut.money.transfer.service.AccountTypes;
+import com.revolut.money.transfer.service.AccountService;
 import com.revolut.money.transfer.service.DolarAccountService;
 import com.revolut.money.transfer.service.EuroAccountService;
 import com.revolut.money.transfer.util.Result;
@@ -21,27 +18,31 @@ import com.revolut.money.transfer.util.RevolutParams;
 public class AccountController {
 
 	
-
+	/**
+	 * 
+	 * @param accountType : Type of account USD:1, EUR:2
+	 * @param accountId : Unique Id of the account
+	 * @param deposit : Amount of the money to deposit
+	 * @return JSON String of the Result object
+	 * @comment This end point for the testing purposes. You can deposit the account. If system not found the account than system will create automatically.
+	 */
+	@Produces(MediaType.APPLICATION_JSON)
 	@PUT
     @Path("/open/{accountType}/{accountId}/{amount}")
-    @Produces(MediaType.TEXT_PLAIN)
-	public String test(
+    public Result openAccount(
 		@PathParam(value="accountType") BigDecimal accountType
 		,@PathParam(value="accountId") BigDecimal accountId
-		,@PathParam(value="amount") BigDecimal deposit) throws JsonProcessingException {
+		,@PathParam(value="amount") BigDecimal deposit) {
 
-		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-		AccountTypes accountTypes=null;
+		AccountService accountTypes=null;
 		if(accountType.intValue()==RevolutParams.ACCOUNT_TYPE_DOLAR)
 			accountTypes=new DolarAccountService();
-		else if(accountType.intValue()==RevolutParams.ACCOUNT_TYPE_EURO){
+		else if(accountType.intValue()==RevolutParams.ACCOUNT_TYPE_EURO)
 			accountTypes=new EuroAccountService();
-		}
-		else{
-			return ow.writeValueAsString(new Result(RevolutParams.NO_ACCOUNT_FOUND, RevolutParams.RESULT_STATU_FAIL, null));
-		}
+		else
+			return new Result(RevolutParams.NO_ACCOUNT_FOUND, RevolutParams.RESULT_STATU_FAIL, null);
 		
-		return ow.writeValueAsString(accountTypes.depositAccount(accountId, deposit));
+		return accountTypes.depositAccount(accountId, deposit);
 	}
 	
 }

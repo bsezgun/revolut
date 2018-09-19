@@ -25,10 +25,8 @@ import com.revolut.money.transfer.util.RevolutParams;
  *  @version
  *  v.1.0.1
  */
-public class DolarAccountService implements AccountTypes {
+public class DolarAccountService implements AccountService {
 
-	
-	
 	public DolarAccountService() {
 	}
 	
