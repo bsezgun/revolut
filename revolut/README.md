@@ -58,7 +58,7 @@ To run tests, simply run "mvn clean test".
 ![alt text](https://github.com/bsezgun/revolut/blob/master/revolut/src/main/resources/imgs/project_structure.PNG)
 
 ##### src/main	
-	 > com.revolut.money.transfer package
+   - > com.revolut.money.transfer package
 				- RevolutApp (Main Class)
 				  - This is the main class of the project. it defined that this is the main class of the application in the pom.xml {at the build part}.
 				  - When it is starts than, 
@@ -84,7 +84,7 @@ To run tests, simply run "mvn clean test".
 	- com.revolut.money.transfer.util package
 		- The utility class and response class  under this package. Utility class is responsible for the final variables. These variables use for response status or can be change project startup behavior.
 		 
-	- > src/main/resources
+##### src/main/resources
 		- Configuration files under this folder. 
 		  1. hibernate.cfg.xml, hibernate.properties are for the H2 Database configuration 
 		  2. application.properties is for application rules configuration
