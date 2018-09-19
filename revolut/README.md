@@ -19,30 +19,30 @@ This project uses:
  
 ### Rest End Points
 > To transfer money : You can transfer money from the account to another account
-  - > http://localhost:8080/revolut/bank/transfer/{accountType}/{toAccountId}/{fromAccountId}/{amount}
-  - > Request Type : POST
-  - > Return Type  : JSON
-  - > Url Parameters
+  - http://localhost:8080/revolut/bank/transfer/{accountType}/{toAccountId}/{fromAccountId}/{amount}
+  -  Request Type : POST
+  -  Return Type  : JSON
+  -  Url Parameters
      - accountType : Account Type (USD:1,EURO:2) (Type:BigDecimal)
      - toAccountId : Bank Account Id of the receiver (Type:BigDecimal)
      - fromAccountId : Bank Account Id of the sender (Type:BigDecimal)
      - amount : Amount of transferring money (Type:BigDecimal)
 ###
 > To deposit account : This end point for the testing purposes. You can deposit the account. If system not found the account than system will create automatically.  
-  - > http://localhost:8080/revolut/bank/deposit/{accountType}/{toAccountId}/{deposit} 
-  - > Request Type : POST
-  - > Return Type  : JSON
-  - > Url Parameters
+  -  http://localhost:8080/revolut/bank/deposit/{accountType}/{toAccountId}/{deposit} 
+  -  Request Type : POST
+  -  Return Type  : JSON
+  -  Url Parameters
       - accountType : Account Type (USD:1,EURO:2) (Type:BigDecimal)
       - toAccountId : Bank Account Id of the receiver (Type:BigDecimal) 
       - amount : Amount of transferring money (Type:BigDecimal)
 
 ###
 > To retrieve account :Also, this end point for the testing purposes. You can view account details by this end point. 
-  - > http://localhost:8080/revolut/bank/account/{accountType}/{accountId} 
-  - > Request Type : POST
-  - > Return Type  : JSON
-  - > Url Parameters
+  -  http://localhost:8080/revolut/bank/account/{accountType}/{accountId} 
+  -  Request Type : POST
+  -  Return Type  : JSON
+  -  Url Parameters
       	- accountType : Account Type (USD:1,EURO:2) (Type:BigDecimal)
     	- accountId : Bank Account Id  (Type:BigDecimal)  
     
