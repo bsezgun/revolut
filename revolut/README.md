@@ -58,7 +58,7 @@ To run tests, simply run "mvn clean test".
 ![alt text](https://github.com/bsezgun/revolut/blob/master/revolut/src/main/resources/imgs/project_structure.PNG)
 
 ##### src/main	
-    -> com.revolut.money.transfer package
+   -> com.revolut.money.transfer package
 	  - RevolutApp (Main Class)
 		  - This is the main class of the project. it defined that this is the main class of the application in the pom.xml {at the build part}.
 				  - When it is starts than, 
