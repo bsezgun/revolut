@@ -27,8 +27,8 @@ This project uses:
      - toAccountId : Bank Account Id of the receiver (Type:BigDecimal)
      - fromAccountId : Bank Account Id of the sender (Type:BigDecimal)
      - amount : Amount of transferring money (Type:BigDecimal)
-
-    - To deposit account : This end point for the testing purposes. You can deposit the account. If system not found the account than system will create automatically.  
+###
+> To deposit account : This end point for the testing purposes. You can deposit the account. If system not found the account than system will create automatically.  
   - > http://localhost:8080/revolut/bank/deposit/{accountType}/{toAccountId}/{deposit} 
   - > Request Type : POST
   - > Return Type  : JSON
