@@ -18,7 +18,7 @@ This project uses:
 - Jackson 2.7.9 (to convert Java Objects to/from JSon)
  
 ### Rest End Points
-    - To transfer money : You can transfer money from the account to another account
+> To transfer money : You can transfer money from the account to another account
   - > http://localhost:8080/revolut/bank/transfer/{accountType}/{toAccountId}/{fromAccountId}/{amount}
   - > Request Type : POST
   - > Return Type  : JSON
@@ -37,7 +37,8 @@ This project uses:
       - toAccountId : Bank Account Id of the receiver (Type:BigDecimal) 
       - amount : Amount of transferring money (Type:BigDecimal)
 
-    - To retrieve account :Also, this end point for the testing purposes. You can view account details by this end point. 
+###
+> To retrieve account :Also, this end point for the testing purposes. You can view account details by this end point. 
   - > http://localhost:8080/revolut/bank/account/{accountType}/{accountId} 
   - > Request Type : POST
   - > Return Type  : JSON
