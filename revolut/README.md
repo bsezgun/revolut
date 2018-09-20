@@ -89,8 +89,8 @@ To run tests, simply run "mvn clean test".
 		 
 ##### src/main/resources
 > Configuration files under this folder. 
-	1. hibernate.cfg.xml, hibernate.properties are for the H2 Database configuration 
-	2. application.properties is for application rules configuration
+1. hibernate.cfg.xml, hibernate.properties are for the H2 Database configuration 
+2. application.properties is for application rules configuration
 	
 #####  src/test
 > revolut package
