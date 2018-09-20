@@ -13,6 +13,7 @@ import javax.persistence.Transient;
 /**
  * 
  * @author bsezgun
+ * @category Entity
  * @comment
  *  This class is in-memory <b>AccountDolar</b> H2 Database table.<br/> accountId column is automatically increased if it is not set.
  * 	@since 2018-09-19

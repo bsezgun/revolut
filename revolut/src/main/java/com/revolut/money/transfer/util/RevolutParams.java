@@ -1,12 +1,18 @@
 package com.revolut.money.transfer.util;
-
-import java.math.BigDecimal;
-
+/**
+ * 
+ * @author bsezgun
+ * @version v.1.0.1
+ * @category Static Variables
+ * @since   2018-09-19
+ * @comment This object is used for the final static variables.
+ */
 public class RevolutParams {
 
 	
 	public final static String RESULT_STATU_SUCCESS="SUCCESS";
 	public final static String RESULT_STATU_FAIL="FAIL";
+	public final static String RESULT_STATU_RESTRICTED="RESTRICTED";
 	
 	
 	public final static String DEPOSIT_TO_ACCOUNT_SUCCESS_MESSAGE="Deposit is been done successfully";

@@ -15,7 +15,6 @@ This project uses:
 - Hibernate 5.3.6
 - H2 In Memory Database 1.4
 - JUnit 4.12
-- Jackson 2.7.9 (to convert Java Objects to/from JSon)
  
 ### Rest End Points
 > To transfer money : You can transfer money from the account to another account
@@ -94,3 +93,8 @@ To run tests, simply run "mvn clean test".
 - All test classes under this package. JUnit test framework is used for testing.	
 - To run tests, simply run "mvn clean test".	
 
+## UML Diagrams
+### Class Diagram
+![alt text](https://github.com/bsezgun/revolut/blob/master/revolut/src/main/resources/imgs/class_diagram.jpg)
+### Sequence Diagram
+![alt text](https://github.com/bsezgun/revolut/blob/master/revolut/src/main/resources/imgs/sequence_diagram.jpg)

@@ -12,12 +12,9 @@ import java.util.List;
 import java.util.Properties;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revolut.money.transfer.RevolutApp;
 import com.revolut.money.transfer.controller.TransferController;
 import com.revolut.money.transfer.entity.Account;
@@ -27,6 +24,13 @@ import com.revolut.money.transfer.service.DolarAccountService;
 import com.revolut.money.transfer.util.Result;
 import com.revolut.money.transfer.util.RevolutParams;
 
+/**
+ * 
+ * @author bsezgun
+ * @version v.1.0.1
+ * @category Test
+ * @since   2018-09-19
+ */
 public class TransferDolarAccountTest {
 
 
@@ -56,12 +60,32 @@ public class TransferDolarAccountTest {
 		 assertTrue(result.getResultStatu().equals(RevolutParams.RESULT_STATU_SUCCESS));
 	 }
 	 
-	 
+	 /**
+	  * @comment if current rules do not changed in the application.properties file <br/>
+	  *  than this test method have to return RevolutParams.RESULT_STATU_SUCCESS
+	  */
 	 @Test
 	 public void transferAccount() throws IOException {
+		 BigDecimal transferAmount=new BigDecimal(600d);
+		 
 		 TransferController transferController=new TransferController();
-		 Result result=transferController.transfer(new BigDecimal(RevolutParams.ACCOUNT_TYPE_DOLAR), new BigDecimal(1), new BigDecimal(2), new BigDecimal(600));
+		 Result result=transferController.transfer(new BigDecimal(RevolutParams.ACCOUNT_TYPE_DOLAR), new BigDecimal(1), new BigDecimal(2), transferAmount);
+		 
 		 assertTrue(result.getResultStatu().equals(RevolutParams.RESULT_STATU_SUCCESS));
+	 }
+	 
+	 /**
+	  * @comment if current rules do not changed in the application.properties file <br/>
+	  *  than this test method have to return RevolutParams.RESULT_STATU_RESTRICTED
+	  */
+	 @Test
+	 public void transferAccountRestricted() throws IOException {
+		 BigDecimal transferAmount=new BigDecimal(400d);
+		 
+		 TransferController transferController=new TransferController();
+		 Result result=transferController.transfer(new BigDecimal(RevolutParams.ACCOUNT_TYPE_DOLAR), new BigDecimal(1), new BigDecimal(2), transferAmount);
+		 
+		 assertTrue(result.getResultStatu().equals(RevolutParams.RESULT_STATU_RESTRICTED));
 	 }
 	 
 	 

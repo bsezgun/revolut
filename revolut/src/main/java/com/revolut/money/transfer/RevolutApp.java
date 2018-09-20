@@ -2,14 +2,11 @@ package com.revolut.money.transfer;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.jetty.server.Server;
@@ -17,6 +14,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.servlet.ServletContainer;
 
+import com.revolut.money.transfer.controller.AccountController;
 import com.revolut.money.transfer.controller.TransferController;
 import com.revolut.money.transfer.entity.Account;
 import com.revolut.money.transfer.entity.AccountDolar;
@@ -25,18 +23,19 @@ import com.revolut.money.transfer.service.DolarAccountService;
 /**
  * 
  * @author bsezgun
+ * @category Main
+ * @since   2018-09-19
+ * @version v.1.0.1
  * @comment
- *  This is the main class and declare in pom.xml as the mainClass. 
- *  <br>It starts a Jetty Server to get Rest requests from other services by {@link TransferController} class.
- *  <br>TransferController class is the rest end point of this application.
- * 	@since
- *  18.09.2018
- *  @version
- *  v.1.0.1
+ *  This is the main class and declared in the pom.xml. 
+ *  <br>It starts a Jetty Server to get Rest requests from other services by {@link TransferController} and {@link AccountController} classes.
+ *  <br>TransferController and AccountController classes publish the rest end points of this application. It creates demo accounts for test-purpose at startup.
  */
 public class RevolutApp {
 
 	public static void main(String[] args)  throws Exception {
+		loadApplicationProperties();
+		
 		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
 
@@ -51,14 +50,7 @@ public class RevolutApp {
                 "com.revolut.money.transfer.controller"
         );
         
-        Map<String,String> initMap=new HashMap<String, String>();
-        initMap.put("com.sun.jersey.api.json.POJOMappingFeature","true");
-        //initMap.put("jersey.config.server.provider.classnames", TransferController.class.getCanonicalName());
-        
-       // jerseyServlet.setInitParameters(initMap);
-        
-        loadApplicationProperties();
-        createTestAccounts();
+       createTestAccounts();
        
         try {
             jettyServer.start();
@@ -73,11 +65,9 @@ public class RevolutApp {
 	
 	private static void loadApplicationProperties() throws IOException {
 		applicationProperties = new Properties();
-		ClassLoader classLoader = new RevolutApp().getClass().getClassLoader();
-		File file = new File(classLoader.getResource("application.properties").getFile());
-		FileInputStream in = new FileInputStream(file);
-		applicationProperties.load(in);
-		in.close();
+		InputStream f=Thread.currentThread().getContextClassLoader().getResourceAsStream("application.properties");
+		applicationProperties.load(f);
+		f.close();
 	}
 	
 	
@@ -87,7 +77,6 @@ public class RevolutApp {
 	       service.depositAccount(new BigDecimal(1), new BigDecimal(500d));
 	       service.depositAccount(new BigDecimal(2), new BigDecimal(1500d));
 	       service.depositAccount(new BigDecimal(3), new BigDecimal(2500d));
-	       
 	       
 	       List<? extends Account> accounts=service.getAllAccounts();
 	       

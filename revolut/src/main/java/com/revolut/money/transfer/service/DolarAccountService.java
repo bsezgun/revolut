@@ -13,22 +13,18 @@ import com.revolut.money.transfer.repository.DolarAccountRepository;
 import com.revolut.money.transfer.util.Result;
 import com.revolut.money.transfer.util.RevolutParams;
 /**
+ * 
  * @author bsezgun
- * @comment
- *  AccountService class is immutable singleton class.
- *  <br/>It creates SessionFactory by Account class and Session when it is instantiated.
- *  <br/>The Account table, create-drop by AccountService object when it is instantiated all time. 
- *  Please look at <b>hibernate.properties</b> file under the resources folder. 
- *  <br/>Session is not close until the application terminated.    
- * 	@since
- *  18.09.2018
- *  @version
- *  v.1.0.1
+ * @version v.1.0.1
+ * @category Business Service
+ * @since   2018-09-19
+ * @comment Business Service to Transfer to Dolar account
  */
 public class DolarAccountService implements AccountService {
 
 	public DolarAccountService() {
 	}
+	
 	
 	public Result depositAccount(BigDecimal accountId,BigDecimal deposit) {
 		Result result=new Result(RevolutParams.DEPOSIT_TO_ACCOUNT_SUCCESS_MESSAGE ,RevolutParams.RESULT_STATU_SUCCESS, null);
@@ -43,8 +39,8 @@ public class DolarAccountService implements AccountService {
 	
 	public Result transferToAccount(BigDecimal toAccountId,BigDecimal fromAccountId,BigDecimal transferAmount) {
 		AccountFacade accountFacade=new DolarAccountFacade();
-		if(!accountFacade.isTransferRestricted(transferAmount)) {
-			return new Result(RevolutParams.TRANSFER_RESTRICTED, RevolutParams.RESULT_STATU_FAIL, null);
+		if(!accountFacade.isTransferNoRestricted(transferAmount)) {
+			return new Result(RevolutParams.TRANSFER_RESTRICTED, RevolutParams.RESULT_STATU_RESTRICTED, null);
 		}
 		if(accountFacade.isSufficentBalance(fromAccountId, transferAmount)) {
 			DolarAccountRepository accountRepository=DolarAccountRepository.getAccountRepository();
@@ -56,7 +52,6 @@ public class DolarAccountService implements AccountService {
 		}
 		
 	}
-	
 	
 	public Account getAccount(BigDecimal accountId) {
 		DolarAccountRepository accountRepository=DolarAccountRepository.getAccountRepository();
@@ -77,9 +72,4 @@ public class DolarAccountService implements AccountService {
 		List<? extends Account> accounts=accountRepository.getAllAccounts();
 		return (List<Account>)accounts;
 	}
-	
-	
-	
-	
-	
 }

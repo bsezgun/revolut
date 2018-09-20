@@ -13,6 +13,14 @@ import com.revolut.money.transfer.repository.EuroAccountRepository;
 import com.revolut.money.transfer.util.Result;
 import com.revolut.money.transfer.util.RevolutParams;
 
+/**
+ * 
+ * @author bsezgun
+ * @version v.1.0.1
+ * @category Business Service
+ * @since   2018-09-19
+ * @comment Business Service to Transfer to Euro account
+ */
 public class EuroAccountService implements AccountService{
 
 	public Result depositAccount(BigDecimal accountId,BigDecimal deposit) {
@@ -28,8 +36,8 @@ public class EuroAccountService implements AccountService{
 	
 	public Result transferToAccount(BigDecimal toAccountId,BigDecimal fromAccountId,BigDecimal transferAmount) {
 		AccountFacade accountFacade=new EuroAccountFacade();
-		if(!accountFacade.isTransferRestricted(transferAmount)) {
-			return new Result(RevolutParams.TRANSFER_RESTRICTED, RevolutParams.RESULT_STATU_FAIL, null);
+		if(!accountFacade.isTransferNoRestricted(transferAmount)) {
+			return new Result(RevolutParams.TRANSFER_RESTRICTED, RevolutParams.RESULT_STATU_RESTRICTED, null);
 		}
 		if(accountFacade.isSufficentBalance(fromAccountId, transferAmount)) {
 			EuroAccountRepository accountRepository=EuroAccountRepository.getAccountRepository();
@@ -41,7 +49,6 @@ public class EuroAccountService implements AccountService{
 		}
 		
 	}
-	
 	
 	public Account getAccount(BigDecimal accountId) {
 		EuroAccountRepository accountRepository=EuroAccountRepository.getAccountRepository();

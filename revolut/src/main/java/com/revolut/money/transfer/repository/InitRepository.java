@@ -7,6 +7,7 @@ import org.hibernate.cfg.Configuration;
  * @author bsezgun
  * @since 2018-09-19
  * @version v.1.0.1
+ * @category Repository Provider
  *
  */
 public class InitRepository {

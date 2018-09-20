@@ -1,28 +1,29 @@
 package com.revolut.money.transfer.util;
-
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
+/**
+ * 
+ * @author bsezgun
+ * @version v.1.0.1
+ * @category Response
+ * @since   2018-09-19
+ * @comment This object is used for the responses.
+ */
 public class Result {
 
 	private String resultMessage;
 	private String resultStatu;
+	/**
+	 * @comment Any type of response object can set to this attribute.
+	 */
 	private Object resultObj;
-	
-	
-	
-	
 	
 	public Result() {
 	}
-
 
 	public Result(String resultMessage, String resultStatu, Object resultObj) {
 		this.resultMessage = resultMessage;
 		this.resultStatu = resultStatu;
 		this.resultObj = resultObj;
 	}
-	
 	
 	public String getResultStatu() {
 		return resultStatu;
@@ -43,10 +44,8 @@ public class Result {
 		this.resultObj = resultObj;
 	}
 	
-	
 	@Override
 	public String toString() {
 		 return "Result Message:"+this.resultMessage+",    Result Statu :"+this.resultStatu;
 	}
-	
 }
