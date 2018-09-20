@@ -27,7 +27,7 @@ This project uses:
      - fromAccountId : Bank Account Id of the sender (Type:BigDecimal)
      - amount : Amount of transferring money (Type:BigDecimal)
 ###
-> To deposit account : This end point for the testing purposes. You can deposit the account. If system not found the account than system will create automatically.  
+> To deposit account : This end point for the test-purpose. You can deposit the account. If the system not found the account than the system will create account automatically.  
   -  http://localhost:8080/revolut/bank/deposit/{accountType}/{toAccountId}/{deposit} 
   -  Request Type : POST
   -  Return Type  : JSON
@@ -39,7 +39,7 @@ This project uses:
 ###
 > To retrieve account :Also, this end point for the testing purposes. You can view account details by this end point. 
   -  http://localhost:8080/revolut/bank/account/{accountType}/{accountId} 
-  -  Request Type : POST
+  -  Request Type : GET
   -  Return Type  : JSON
   -  Url Parameters
       	- accountType : Account Type (USD:1,EURO:2) (Type:BigDecimal)
@@ -48,6 +48,9 @@ This project uses:
 ### Package Application
 This project uses [Maven](https://maven.apache.org/).
 To create single executable application (revolut.jar), simply run "mvn clean install".
+
+### Running Application
+{path Of the java 1.8}/java -jar revolut.jar
 
 ### Running Tests
 This project uses [Maven](https://maven.apache.org/).
@@ -62,9 +65,9 @@ To run tests, simply run "mvn clean test".
 - RevolutApp (Main Class)
 - This is the main class of the project. it defined that this is the main class of the application in the pom.xml {at the build part}.
 	- When it is starts than, 
-		1. It starts to Jersey server. Loads Rest Controllers under 'com.revolut.money.transfer.controller' package.
-		2. It loads properties from application.properties file
-		3. It creates Test Accounts for test purposes
+		1. It loads properties from application.properties file
+		2. It starts to Jersey server. Loads Rest Controllers under 'com.revolut.money.transfer.controller' package.
+		3. It creates Test Accounts for test purpose
 		    
 > com.revolut.money.transfer.controller package
 - The Rest Controller Classes under this package. Please look at the Rest End Points section
@@ -86,8 +89,9 @@ To run tests, simply run "mvn clean test".
 		 
 ##### src/main/resources
 > Configuration files under this folder. 
-		  1. hibernate.cfg.xml, hibernate.properties are for the H2 Database configuration 
-		  2. application.properties is for application rules configuration
+	1. hibernate.cfg.xml, hibernate.properties are for the H2 Database configuration 
+	2. application.properties is for application rules configuration
+	
 #####  src/test
 > revolut package
 - All test classes under this package. JUnit test framework is used for testing.	
