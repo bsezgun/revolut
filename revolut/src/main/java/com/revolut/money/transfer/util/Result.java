@@ -3,16 +3,16 @@ package com.revolut.money.transfer.util;
  * 
  * @author bsezgun
  * @version v.1.0.1
- * @category Response
+ *  Result 
  * @since   2018-09-19
- * @comment This object is used for the responses.
+ *  This object is used for the responses.
  */
 public class Result {
 
 	private String resultMessage;
 	private String resultStatu;
 	/**
-	 * @comment Any type of response object can set to this attribute.
+	 *  Any type of response object can set to this attribute.
 	 */
 	private Object resultObj;
 	

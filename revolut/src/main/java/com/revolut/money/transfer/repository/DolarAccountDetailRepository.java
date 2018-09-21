@@ -11,7 +11,7 @@ import com.revolut.money.transfer.entity.AccountDetailDolar;
  * 
  * @author bsezgun
  * @version v.1.0.1
- * @category Repository
+ *  Repository
  * @since   2018-09-19
  * 
  */
@@ -30,7 +30,7 @@ public class DolarAccountDetailRepository {
 	/**
 	 * 
 	 * @return DolarAccountDetailRepository
-	 * @comment The singleton pattern use by this static method. One instance of this class can create. Also the constructor is private. 
+	 *  The singleton pattern use by this static method. One instance of this class can create. Also the constructor is private. 
 	 */
 	public static DolarAccountDetailRepository getAccountDetailRepository() {
 		if(accountDetailRepository==null)
@@ -45,8 +45,7 @@ public class DolarAccountDetailRepository {
 	/**
 	 * 
 	 * @param accountDetail {@link AccountDetailDolar}
-	 * @return void
-	 * @comment save detail of the transfer transaction
+	 *  save detail of the transfer transaction
 	 * 
 	 */
 	public void saveAccountDetail(AccountDetailDolar accountDetail) {
@@ -55,9 +54,9 @@ public class DolarAccountDetailRepository {
 	
 	/**
 	 * 
-	 * @param accountDetail 
+	 * @param accountDetailId : Unique Id of the account_detail_dolar table
 	 * @return AccountDetailDolar  {@link AccountDetailDolar}
-	 * @comment get detail of the transfer transaction 
+	 *  get detail of the transfer transaction 
 	 * 
 	 */
 	public AccountDetailDolar getAccountDetail(BigDecimal accountDetailId) {
@@ -68,8 +67,8 @@ public class DolarAccountDetailRepository {
 	/**
 	 * 
 	 * @param accountId Foreign key of the AccountDolar table in the AccountDetailDolar.
-	 * @return List<AccountDetailDolar> {@link AccountDetailDolar}
-	 * @comment The account details of the all transfer transactions
+	 * @return {@link List}
+	 *  The account details of the all transfer transactions
 	 * 
 	 */
 	@SuppressWarnings("unchecked")

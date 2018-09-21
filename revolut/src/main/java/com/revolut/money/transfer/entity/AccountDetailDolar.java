@@ -13,10 +13,10 @@ import javax.persistence.Table;
 /**
  * 
  * @author bsezgun
- * @category Entity
- * @comment
- *  This class is in-memory <b>AccountDetailDolar</b> H2 Database table.<br/> accountDetailId column is automatically increased if it is not set.
- *  <br/>accountId is the foreign key of AccountDolar table.
+ *  Entity
+ * 
+ *  This class is in-memory <b>AccountDetailDolar</b> H2 Database table.. accountDetailId column is automatically increased if it is not set.
+ *  .accountId is the foreign key of AccountDolar table.
  * 	@since 2018-09-19
  *  @version v.1.0.1
  */

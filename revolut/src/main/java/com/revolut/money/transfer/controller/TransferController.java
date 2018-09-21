@@ -19,9 +19,9 @@ import com.revolut.money.transfer.util.RevolutParams;
  * 
  * @author bsezgun
  * @version v.1.0.1
- * @category Rest Controller
+ *  Rest Controller
  * @since   2018-09-19
- * @comment The rest end point.
+ *  The rest end point.
  */
 @Path("/bank")
 public class TransferController {
@@ -32,7 +32,7 @@ public class TransferController {
 	 * @param fromAccountId : Unique Id of the sender account
 	 * @param amount : Amount of the money to transfer
 	 * @return JSON String of the Result object  {@link Result}
-	 * @comment This rest end point responsibility is to transfer money from the account to another account. 
+	 *  This rest end point responsibility is to transfer money from the account to another account. 
 	 */
 	@Produces(MediaType.APPLICATION_JSON)
 	@POST
@@ -57,7 +57,7 @@ public class TransferController {
 	 * @param toAccountId : Unique Id of the requester account
 	 * @param deposit : Amount of the money to deposit
 	 * @return JSON String of the Result object  {@link Result}
-	 * @comment This rest end point for the test-purpose. You can deposit the account. If system not found the account than system will create automatically.
+	 *  This rest end point for the test-purpose. You can deposit the account. If system not found the account than system will create automatically.
 	 */
 	@Produces(MediaType.APPLICATION_JSON)
 	@POST
@@ -82,8 +82,9 @@ public class TransferController {
 	 * 
 	 * @param accountType :Type of account USD:1, EUR:2
 	 * @param accountId : Unique Id of the account
-	 * @return JSON String of the Result object  {@link Result}
-	 * @comment This rest end point for the test-purpose. You can view account details by this rest end point.
+	 * @return {@link Result}
+	 *  This rest end point for the test-purpose. You can view account details by this rest end point.
+	 * 
 	 */
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET

@@ -1,0 +1,8 @@
+com.revolut.money.transfer
+com.revolut.money.transfer.controller
+com.revolut.money.transfer.entity
+com.revolut.money.transfer.facade
+com.revolut.money.transfer.repository
+com.revolut.money.transfer.service
+com.revolut.money.transfer.util
+revolut

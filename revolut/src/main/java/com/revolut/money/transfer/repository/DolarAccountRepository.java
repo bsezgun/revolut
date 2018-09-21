@@ -15,8 +15,8 @@ import com.revolut.money.transfer.util.RevolutParams;
 /**
  * 
  * 	@author bsezgun
- * 	@comment Repository of the H2 Table.
- *  @category Repository
+ * 	 Repository of the H2 Table.
+ *   Repository
  * 	@since 2018-09-19
  *  @version v.1.0.1
  */
@@ -35,7 +35,7 @@ public class DolarAccountRepository {
 		/**
 		 * 
 		 * @return DolarAccountRepository
-		 * @comment The singleton pattern use by this static method. One instance of this class can create. Also the constructor is private. 
+		 *  The singleton pattern use by this static method. One instance of this class can create. Also the constructor is private. 
 		 */
 		public static DolarAccountRepository getAccountRepository() {
 			if(accountRepository==null)
@@ -102,7 +102,7 @@ public class DolarAccountRepository {
 		 * 
 		 * @param account {@link AccountDolar}
 		 * @return void
-		 * @comment save of the transfer transaction
+		 *  save of the transfer transaction
 		 */
 		private void saveAccount(AccountDolar account) {
 			session.save(account);
@@ -120,8 +120,8 @@ public class DolarAccountRepository {
 		/**
 		 * 
 		 * @param accountId  :Unique id of the AccountDolar table
-		 * @return List<AccountDetailDolar>  {@link AccountDetailDolar}
-		 * @comment get detail of the transfer transaction 
+		 * @return List  {@link AccountDetailDolar}
+		 *  get detail of the transfer transaction 
 		 * 
 		 */
 		public List<AccountDetailDolar> getAccountDetails(BigDecimal accountId) {
@@ -131,8 +131,8 @@ public class DolarAccountRepository {
 		
 		/**
 		 * 
-		 * @return List<AccountDolar>  {@link AccountDolar}
-		 * @comment this method is to test-purpose. To verify all accounts properly created. 
+		 * @return {@link List}
+		 *  this method is to test-purpose. To verify all accounts properly created. 
 		 */
 		@SuppressWarnings("unchecked")
 		public List<AccountDolar> getAllAccounts() {

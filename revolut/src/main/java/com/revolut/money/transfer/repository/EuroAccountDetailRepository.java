@@ -11,7 +11,7 @@ import com.revolut.money.transfer.entity.AccountDetailEuro;
  * 
  * @author bsezgun
  * @version v.1.0.1
- * @category Repository
+ *  Repository
  * @since   2018-09-19
  * 
  */
@@ -30,7 +30,7 @@ public class EuroAccountDetailRepository {
 	/**
 	 * 
 	 * @return EuroAccountDetailRepository
-	 * @comment The singleton pattern use by this static method. One instance of this class can create. Also the constructor is private. 
+	 *  The singleton pattern use by this static method. One instance of this class can create. Also the constructor is private. 
 	 */
 	public static EuroAccountDetailRepository getAccountDetailRepository() {
 		if(accountDetailRepository==null)
@@ -45,21 +45,18 @@ public class EuroAccountDetailRepository {
 	/**
 	 * 
 	 * @param accountDetail {@link AccountDetailEuro}
-	 * @return void
-	 * @comment save detail of the transfer transaction
+	 * save detail of the transfer transaction
 	 * 
 	 */
 	public void saveAccountDetail(AccountDetailEuro accountDetail) {
 		session.save(accountDetail);
 	}
 	
-	/**
-	 * 
-	 * @param accountDetail 
-	 * @return AccountDetailDolar  {@link AccountDetailEuro}
-	 * @comment get detail of the transfer transaction 
-	 * 
-	 */
+ /**
+  * 
+  * @param accountDetailId : Unique id of the account_detail_euro table
+  * @return AccountDetailEuro 
+  */
 	public AccountDetailEuro getAccountDetail(BigDecimal accountDetailId) {
 		AccountDetailEuro accountDetail= session.get(AccountDetailEuro.class, accountDetailId);
 		return accountDetail;
@@ -69,8 +66,8 @@ public class EuroAccountDetailRepository {
 	/**
 	 * 
 	 * @param accountId Foreign key of the AccountEuro table in the AccountDetailEuro.
-	 * @return List<AccountDetailEuro> {@link AccountDetailEuro}
-	 * @comment The account details of the all transfer transactions
+	 * @return {@link List}
+	 *  The account details of the all transfer transactions
 	 * 
 	 */
 	@SuppressWarnings("unchecked")

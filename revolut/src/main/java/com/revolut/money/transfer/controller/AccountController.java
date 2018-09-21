@@ -16,9 +16,9 @@ import com.revolut.money.transfer.util.RevolutParams;
 /**
  * @author bsezgun
  * @version v.1.0.1
- * @category Rest Controller
+ *  Rest Controller
  * @since   2018-09-19
- * @comment The rest end point.
+ *  The rest end point.
  *
  */
 @Path("/account")
@@ -31,7 +31,7 @@ public class AccountController {
 	 * @param accountId : Unique Id of the account
 	 * @param deposit : Amount of the money to deposit
 	 * @return JSON String of the Result object
-	 * @comment This end point for the test-purpose. You can deposit the account. If system not found the account than system will create automatically.
+	 *  This end point for the test-purpose. You can deposit the account. If system not found the account than system will create automatically.
 	 */
 	@Produces(MediaType.APPLICATION_JSON)
 	@PUT

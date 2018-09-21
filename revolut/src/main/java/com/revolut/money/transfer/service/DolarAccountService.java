@@ -16,9 +16,9 @@ import com.revolut.money.transfer.util.RevolutParams;
  * 
  * @author bsezgun
  * @version v.1.0.1
- * @category Business Service
+ *  Business Service
  * @since   2018-09-19
- * @comment Business Service to Transfer to Dolar account
+ *  Business Service to Transfer to Dolar account
  */
 public class DolarAccountService implements AccountService {
 

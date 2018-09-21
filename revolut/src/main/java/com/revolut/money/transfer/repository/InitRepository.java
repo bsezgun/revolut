@@ -7,16 +7,16 @@ import org.hibernate.cfg.Configuration;
  * @author bsezgun
  * @since 2018-09-19
  * @version v.1.0.1
- * @category Repository Provider
+ *  Repository Provider
  *
  */
 public class InitRepository {
 
 	/**
-	 * @param Entity class of H2 Database table	 *   
+	 * @param clazz: Entity class of H2 Database table	 *   
 	 * @return {@link SessionFactory}
-	 * @comment
-	 *  This method create new SessionFactory for related Class<br/> to bind with H2 Database table.
+	 * 
+	 *  This method create new SessionFactory for related Class. to bind with H2 Database table.
 	 * 
 	 */
 	@SuppressWarnings("rawtypes")

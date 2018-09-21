@@ -23,10 +23,10 @@ import com.revolut.money.transfer.service.DolarAccountService;
 /**
  * 
  * @author bsezgun
- * @category Main
+ *  Main
  * @since   2018-09-19
  * @version v.1.0.1
- * @comment
+ * 
  *  This is the main class and declared in the pom.xml. 
  *  <br>It starts a Jetty Server to get Rest requests from other services by {@link TransferController} and {@link AccountController} classes.
  *  <br>TransferController and AccountController classes publish the rest end points of this application. It creates demo accounts for test-purpose at startup.

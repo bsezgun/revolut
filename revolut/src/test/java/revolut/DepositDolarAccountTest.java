@@ -20,7 +20,7 @@ import com.revolut.money.transfer.util.RevolutParams;
  * 
  * @author bsezgun
  * @version v.1.0.1
- * @category Test
+ *  Test
  * @since   2018-09-19
  */
 public class DepositDolarAccountTest {

@@ -15,8 +15,8 @@ import com.revolut.money.transfer.entity.AccountEuro;
 /**
  * 
  * 	@author bsezgun
- * 	@comment Repository of the H2 Table.
- *  @category Repository
+ * 	 Repository of the H2 Table.
+ *   Repository
  * 	@since 2018-09-19
  *  @version v.1.0.1
  */
@@ -35,7 +35,7 @@ public class EuroAccountRepository {
 		/**
 		 * 
 		 * @return EuroAccountRepository
-		 * @comment The singleton pattern use by this static method. One instance of this class can create. Also the constructor is private. 
+		 *  The singleton pattern use by this static method. One instance of this class can create. Also the constructor is private. 
 		 */
 		public static EuroAccountRepository getAccountRepository() {
 			if(accountRepository==null)
@@ -102,7 +102,7 @@ public class EuroAccountRepository {
 		 * 
 		 * @param account {@link AccountEuro}
 		 * @return void
-		 * @comment save of the transfer transaction
+		 *  save of the transfer transaction
 		 */
 		private void saveAccount(AccountEuro account) {
 			session.save(account);
@@ -120,8 +120,8 @@ public class EuroAccountRepository {
 		/**
 		 * 
 		 * @param accountId  :Unique id of the AccountEuro table
-		 * @return List<AccountDetailEuro>  {@link AccountDetailEuro}
-		 * @comment get detail of the transfer transaction 
+		 * @return List  {@link AccountDetailEuro}
+		 *  get detail of the transfer transaction 
 		 * 
 		 */
 		public List<AccountDetailEuro> getAccountDetails(BigDecimal accountId) {
@@ -131,8 +131,8 @@ public class EuroAccountRepository {
 		
 		/**
 		 * 
-		 * @return List<AccountEuro>  {@link AccountEuro}
-		 * @comment this method is to test-purpose. To verify all accounts properly created. 
+		 * @return List  {@link AccountEuro}
+		 *  this method is to test-purpose. To verify all accounts properly created. 
 		 */
 		@SuppressWarnings("unchecked")
 		public List<AccountEuro> getAllAccounts() {

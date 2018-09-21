@@ -28,7 +28,7 @@ import com.revolut.money.transfer.util.RevolutParams;
  * 
  * @author bsezgun
  * @version v.1.0.1
- * @category Test
+ *  Test
  * @since   2018-09-19
  */
 public class TransferDolarAccountTest {
@@ -61,11 +61,12 @@ public class TransferDolarAccountTest {
 	 }
 	 
 	 /**
-	  * @comment if current rules do not changed in the application.properties file <br/>
+	  *  if current rules do not changed in the application.properties file .
 	  *  than this test method have to return RevolutParams.RESULT_STATU_SUCCESS
+	  *  
 	  */
 	 @Test
-	 public void transferAccount() throws IOException {
+	 public void transferAccount() {
 		 BigDecimal transferAmount=new BigDecimal(600d);
 		 
 		 TransferController transferController=new TransferController();
@@ -75,11 +76,12 @@ public class TransferDolarAccountTest {
 	 }
 	 
 	 /**
-	  * @comment if current rules do not changed in the application.properties file <br/>
+	  *  if current rules do not changed in the application.properties file .
 	  *  than this test method have to return RevolutParams.RESULT_STATU_RESTRICTED
+	  *  
 	  */
 	 @Test
-	 public void transferAccountRestricted() throws IOException {
+	 public void transferAccountRestricted() {
 		 BigDecimal transferAmount=new BigDecimal(400d);
 		 
 		 TransferController transferController=new TransferController();

@@ -9,7 +9,7 @@ import com.revolut.money.transfer.repository.DolarAccountRepository;
  * 
  * @author bsezgun
  * @since 2018-09-19
- * @category Business Service Control
+ *  Business Service Control
  * @version v.1.0.1
  */
 public class DolarAccountFacade implements AccountFacade {

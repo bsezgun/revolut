@@ -3,14 +3,17 @@ package com.revolut.money.transfer.util;
  * 
  * @author bsezgun
  * @version v.1.0.1
- * @category Static Variables
+ *  Static Variables
  * @since   2018-09-19
- * @comment This object is used for the final static variables.
+ *  This object is used for the final static variables. 
  */
 public class RevolutParams {
 
-	
 	public final static String RESULT_STATU_SUCCESS="SUCCESS";
+	
+	/**
+	 * {@value RevolutParams#RESULT_STATU_FAIL}
+	 */
 	public final static String RESULT_STATU_FAIL="FAIL";
 	public final static String RESULT_STATU_RESTRICTED="RESTRICTED";
 	
@@ -29,7 +32,13 @@ public class RevolutParams {
 	public final static String NO_ACCOUNT_FOUND="Account Not Found";
 	public final static String ACCOUNT_FOUND="Account Found";
 	
+	/**
+	 * {@value RevolutParams#ACCOUNT_TYPE_DOLAR}
+	 */
 	public final static int ACCOUNT_TYPE_DOLAR=1;
+	/**
+	 * {@value RevolutParams#ACCOUNT_TYPE_EURO}
+	 */
 	public final static int ACCOUNT_TYPE_EURO=2;
 	
 }
